@@ -7,48 +7,73 @@
 
 <style>
 body{
-margin:0;
-background:#111;
-color:white;
-font-family:Arial,sans-serif;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#111;
+    color:white;
 }
+
 header{
-background:#000;
-padding:20px;
-text-align:center;
-font-size:28px;
-font-weight:bold;
+    background:#000;
+    padding:20px;
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
 }
+
 .hero{
-padding:40px 20px;
-text-align:center;
+    text-align:center;
+    padding:40px 20px;
 }
-.btn{
-background:#00c853;
-color:white;
-padding:12px 25px;
-border-radius:8px;
-text-decoration:none;
-display:inline-block;
-margin-top:15px;
+
+.hero h1{
+    font-size:34px;
 }
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-padding:20px;
+
+.hero p{
+    color:#ccc;
 }
+
+.search{
+    width:90%;
+    max-width:400px;
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    margin-top:20px;
+}
+
+.container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    padding:30px;
+}
+
 .card{
-background:#222;
-padding:15px;
-border-radius:12px;
-text-align:center;
+    background:#1d1d1d;
+    width:260px;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
 }
-.card img{
-width:100%;
-border-radius:10px;
+
+.card h2{
+    margin:10px 0;
+}
+
+.btn{
+    display:inline-block;
+    background:#00c853;
+    color:white;
+    text-decoration:none;
+    padding:10px 20px;
+    border-radius:8px;
+    margin-top:10px;
 }
 </style>
+
 </head>
 
 <body>
@@ -58,21 +83,28 @@ border-radius:10px;
 <div class="hero">
 <h1>Everything You Need, In One Place</h1>
 <p>Apps • AI Tools • Deals • Templates</p>
-<a href="#" class="btn">Explore</a>
+
+<input class="search" placeholder="🔍 Search Apps...">
 </div>
 
-<div class="products">
+<div class="container">
 
 <div class="card">
-<h2>ChatGPT</h2>
+<h2>🤖 ChatGPT</h2>
 <p>Best AI Assistant</p>
-<a class="btn" href="https://chat.openai.com">Open</a>
+<a class="btn" href="https://play.google.com/store/apps/details?id=com.openai.chatgpt" target="_blank">Download</a>
 </div>
 
 <div class="card">
-<h2>CapCut</h2>
+<h2>🎬 CapCut</h2>
 <p>Best Video Editor</p>
-<a class="btn" href="https://www.capcut.com">Download</a>
+<a class="btn" href="https://play.google.com/store/apps/details?id=com.lemon.lvoverseas" target="_blank">Download</a>
+</div>
+
+<div class="card">
+<h2>📸 Lightroom</h2>
+<p>Photo Editing</p>
+<a class="btn" href="https://play.google.com/store/apps/details?id=com.adobe.lrmobile" target="_blank">Download</a>
 </div>
 
 </div>
