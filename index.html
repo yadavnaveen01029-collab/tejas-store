@@ -1,369 +1,663 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Teja's Store</title>
+    <meta charset="UTF-8">
 
-}<style>
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#111;
-    color:white;
-}
+    <!-- Very important for normal mobile view -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-header{
-    background: linear-gradient(135deg, #000000, #1f1f1f);
-    text-align: center;
-    padding: 30px 20px;
-    border-bottom: 3px solid #00c853;
-}
+    <title>Teja's Store</title>
 
-.hero{
-    text-align:center;
-    padding:50px 20px;
-    background:linear-gradient(180deg,#1a1a1a,#111);
-    border-radius:0 0 25px 25px;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-.hero h1{
-    font-size:42px;
-    color:white;
-    margin-bottom:15px;
-    font-weight:bold;
-}
-    .hero p{
-    color:#e0e0e0;
-    font-size:18px;
-    line-height:1.7;
-    margin-bottom:20px;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.search{
-    width:100%;
-    max-width:none;
-    box-sizing:border-box;
-    padding:12px 16px;
-    font-size:14px;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            background: #111;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
 
-.container{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-    padding:30px;
-}
+        header {
+            background: #000;
+            padding: 18px 15px;
+            text-align: center;
+            border-bottom: 1px solid #1f1f1f;
+        }
 
-@media (max-width:768px){
-    .container{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+            font-weight: bold;
+        }
 
-@media (max-width:480px){
-    .container{
-        grid-template-columns:repeat(2,1fr);
-        gap:15px;
-    }
-}
+        header p {
+            margin: 8px 0 0;
+            color: #ccc;
+            font-size: 15px;
+        }
 
-.card{
-    background:#1d1d1d;
-    width:auto;
-    padding:20px;
-    border-radius:20px;
-    text-align:center;
-    border:1px solid #2e2e2e;
-    box-shadow:0 10px 25px rgba(0,0,0,0.35);
-    transition:0.3s;
-}
-    .card img{
-    width:180px;
-    height:220px;
-    object-fit:cover;
-    border-radius:15px;
-    border:3px solid #00c853;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
-    }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+            padding: 0;
+        }
 
-.card h2{
-    margin:10px 0;
-    .card p{
-        .btn{
-    font-size:11px;
-    padding:6px 8px;
-    margin-top:5px;
-}
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            background: #171717;
+            border: 1px solid #2c2c2c;
+            padding: 9px 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: 0.25s ease;
+        }
 
-.btn{
-    display:inline-block;
-    background:#00c853;
-    color:white;
-    text-decoration:none;
-    padding:10px 20px;
-    border-radius:8px;
-    margin-top:10px;
-}
-.banner img{
-    width:100%;
-    height:auto;
-    display:block;
-}
-    .navbar{
-    background:#000;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:20px;
-    padding:15px;
-    border-top:2px solid #00c853;
-    border-bottom:2px solid #00c853;
-}
+        .navbar a:hover {
+            background: #00c853;
+            color: #000;
+            border-color: #00c853;
+        }
 
-.navbar a{
-    color:#ffffff;
-    text-decoration:none;
-    font-size:16px;
-    font-weight:bold;
-    padding:8px 14px;
-    border-radius:8px;
-    transition:0.3s;
-}
+        .banner {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
 
-.navbar a:hover{
-    background:#00c853;
-    color:#000;
-}
-    @media (max-width:600px){
+        .banner a {
+            display: block;
+            width: 100%;
+        }
 
-    header{
-        padding:20px 10px;
-    }
+        .banner img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
 
-    .hero{
-        padding:30px 12px;
-    }
+        .hero {
+            text-align: center;
+            padding: 32px 18px;
+        }
 
-    .hero h1{
-        font-size:28px;
-    }
+        .hero h1 {
+            margin: 0 0 10px;
+            font-size: 34px;
+        }
 
-    .hero p{
-        font-size:15px;
-    }
+        .hero p {
+            margin: 0;
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 16px;
+        }
 
-    .search{
-        width:90%;
-        max-width:none;
-        box-sizing:border-box;
-    }
+        .search {
+            display: block;
+            width: min(650px, 92%);
+            margin: 22px auto 0;
+            padding: 14px 18px;
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            font-size: 16px;
+            background: #fff;
+            color: #222;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.35);
+        }
 
-    .container{
-    width:100%;
-    box-sizing:border-box;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:5px;
-    padding:8px 4px;
-}
+        .search::placeholder {
+            color: #777;
+        }
 
-    .card{
-    padding:5px;
-    width:100%;
-    min-width:0;
-    box-sizing:border-box;
-}  
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
 
-    .card img{
-    width:100%;
-    height:90px;
-    object-fit:cover;
-    }
+        .card {
+            width: 100%;
+            min-width: 0;
+            background: #1d1d1d;
+            border: 1px solid #00c853;
+            border-radius: 15px;
+            padding: 14px;
+            text-align: center;
+            box-shadow: 0 0 12px rgba(0, 200, 83, 0.12);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
 
-    .navbar{
-        gap:6px;
-        padding:8px 5px;
-        flex-wrap:wrap;
-    }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(0, 200, 83, 0.25);
+        }
 
-    .navbar a{
-        font-size:12px;
-        padding:6px 8px;
-    }
+        .card img {
+            display: block;
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
 
-    .banner img{
-        width:100%;
-        height:auto;
-    }
-}
-</style>
-    
+        .card h2 {
+            margin: 7px 0;
+            font-size: 20px;
+            line-height: 1.25;
+        }
+
+        .card p {
+            margin: 7px 0;
+            font-size: 15px;
+            color: #fff;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 10px 16px;
+            background: #00c853;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.25s ease;
+        }
+
+        .btn:hover {
+            background: #00e676;
+            color: #000;
+        }
+
+        /* Tablet */
+        @media (max-width: 900px) {
+            header h1 {
+                font-size: 26px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .container {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 10px;
+                padding: 12px;
+            }
+
+            .card {
+                padding: 9px;
+            }
+
+            .card img {
+                height: 150px;
+            }
+
+            .card h2 {
+                font-size: 13px;
+            }
+
+            .card p {
+                font-size: 10px;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 7px 4px;
+                font-size: 9px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 8px;
+            }
+
+            header h1 {
+                font-size: 22px;
+            }
+
+            header p {
+                font-size: 12px;
+            }
+
+            .navbar {
+                gap: 5px;
+                margin-top: 12px;
+            }
+
+            .navbar a {
+                font-size: 10px;
+                padding: 6px 7px;
+                border-radius: 8px;
+            }
+
+            .hero {
+                padding: 24px 10px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 12px;
+                line-height: 1.5;
+            }
+
+            .search {
+                width: 100%;
+                max-width: none;
+                padding: 11px 13px;
+                font-size: 13px;
+                margin-top: 16px;
+            }
+
+            .container {
+                width: 100%;
+                max-width: none;
+                padding: 8px 4px;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 5px;
+            }
+
+            .card {
+                width: 100%;
+                min-width: 0;
+                padding: 5px;
+                border-radius: 9px;
+            }
+
+            .card img {
+                width: 100%;
+                height: 90px;
+                object-fit: cover;
+                border-radius: 7px;
+                margin-bottom: 5px;
+            }
+
+            .card h2 {
+                font-size: 10px;
+                line-height: 1.15;
+                margin: 5px 0;
+                word-break: normal;
+                overflow-wrap: anywhere;
+            }
+
+            .card p {
+                font-size: 8px;
+                margin: 4px 0;
+                line-height: 1.2;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                padding: 5px 2px;
+                margin-top: 4px;
+                font-size: 8px;
+                border-radius: 6px;
+            }
+
+            .banner img {
+                width: 100%;
+                height: auto;
+                min-height: 0;
+                object-fit: contain;
+            }
+        }
+
+        /* Very small phones */
+        @media (max-width: 380px) {
+            .navbar a {
+                font-size: 9px;
+                padding: 5px 6px;
+            }
+
+            .hero h1 {
+                font-size: 21px;
+            }
+
+            .hero p {
+                font-size: 11px;
+            }
+
+            .card img {
+                height: 82px;
+            }
+
+            .card h2 {
+                font-size: 9px;
+            }
+
+            .card p {
+                font-size: 7px;
+            }
+
+            .btn {
+                font-size: 7px;
+                padding: 4px 2px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
 <header>
     <h1>🛍️ Teja's Store</h1>
     <p>Everything You Need, In One Place</p>
-<nav class="navbar">
-    <a href="index.html">🏠 Home</a>
-    <a href="fashion.html">👕 Fashion</a>
-    <a href="costumes.html">🎭 Costumes</a>
-    <a href="vegetables.html">🥬 Vegetables</a>
-    <a href="aitools.html">🤖 AI Tools</a>
-    <a href="contact.html">📞 Contact</a>
-</nav>
+
+    <nav class="navbar">
+        <a href="index.html">🏠 Home</a>
+        <a href="fashion.html">👕 Fashion</a>
+        <a href="costumes.html">🎭 Costumes</a>
+        <a href="vegetables.html">🥬 Vegetables</a>
+        <a href="aitools.html">🤖 AI Tools</a>
+        <a href="contact.html">📞 Contact</a>
+    </nav>
+</header>
 
 <section class="banner">
-  <a href="fashion.html">
-    <img src="file_0000000037bc8208adc0ffe8a9124908.png" alt="Teja's Store Banner">
-  </a>
+    <a href="fashion.html">
+        <img
+            src="file_0000000037bc8208adc0ffe8a9124908.png"
+            alt="Teja's Store Banner"
+        >
+    </a>
 </section>
-      
-        
-        
-
-<div class="hero">
-<h1>Everything You Need, In One Place</h1>
-<p>🥬 Fresh Vegetables • 🍎 Fresh Fruits • 👕 Fashion • 🎭 Costume Rentals • 🤖 AI Tools • 📱 Apps</p>
-
-<input class="search" placeholder="🔍 Search Products, Vegetables, Rentals...">
-</div>
-
-<div class="container">
-
-</div>
 
 <section class="hero">
-  <h1>🎭 Costume Rentals</h1>
-  <p>Rent the Perfect Costume for Every Occasion</p>
+    <h1>Everything You Need, In One Place</h1>
+
+    <p>
+        🥬 Fresh Vegetables • 🍎 Fresh Fruits • 👕 Fashion •
+        🎭 Costume Rentals • 🤖 AI Tools • 📱 Apps
+    </p>
+
+    <input
+        class="search"
+        type="text"
+        placeholder="🔍 Search Products, Vegetables, Rentals..."
+        aria-label="Search products"
+    >
+</section>
+
+<section class="hero">
+    <h1>🎭 Costume Rentals</h1>
+    <p>Rent the Perfect Costume for Every Occasion</p>
 </section>
 
 <div class="container">
 
-  <div class="card">
-    <img src="Kids Spider-man PS4 Advanced Suit Spiderman Children Cosplay Jumpsuit.jpeg" alt="Spider-Man Costume">
-    <h2>🦸 Spider-Man Costume</h2>
-    <p><strong>Rent: ₹599 / Day</strong></p>
-    <a class="btn" href="https://wa.me/8555911782?text=Hi%20I%20want%20to%20rent%20Spider-Man%20Costume">Rent Now</a>
-  </div>
-
-  <div class="card">
-    <img src="Red-frock.jpg" alt="Princess Costume">
-    <h2>👸 Princess Costume</h2>
-    <p><strong>Rent: ₹499 / Day</strong></p>
-    <a class="btn" href="https://wa.me/8555911782?text=Hi%20I%20want%20to%20rent%20the%20Princess%20Costume">Rent Now</a>
-  </div>
-
-      <div class="card">
-    <img src="Gemini_Generated_Image_h1dwynh1dwynh1dw (1).png" alt="Police Costume">
-    <h2>👮 Police Costume</h2>
-    <p><strong>Rent: ₹499 / Day</strong></p>
-    <a class="btn" href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20Police%20Costume">
-        Rent Now
-    </a>
-  </div>
-
- <div class="card">
-    <img src="78-copy.jpg" alt="Doctor Costume">
-    <h2>👨‍⚕️ Doctor Costume</h2>
-    <p><strong>Rent: ₹499 / Day</strong></p>
-    <a class="btn" href="https://wa.me/8555911782?text=Hi%20I%20want%20to%20rent%20the%20Doctor%20Costume">Rent Now</a>
- </div> 
-
-<div class="card">
-    <img src="Gemini_Generated_Image_gt88tgt88tgt88tg.png" alt="Queen Costume">
-    <h2>👑 Queen Costume</h2>
-    <p><strong>Rent: ₹499 / Day</strong></p>
-    <a class="btn" href="https://wa.me/8555911782?text=Hi%20I%20want%20to%20rent%20the%20Queen%20Costume">Rent Now</a>
-</div>
-
-<div class="card">
-    <img src="Gemini_Generated_Image_u15j7fu15j7fu15j.png" alt="Batman Costume">
-    <h2>🦇 Batman Costume</h2>
-    <p><strong>Rent: ₹499 / Day</strong></p>
-    <a class="btn" href="https://wa.me/8555911782?text=Hi%20I%20want%20to%20rent%20the%20Batman%20Costume">Rent Now</a>
-</div>
-
-<div class="card">
-  <h2>🦸 Superman Costume</h2>
-  <img src="SUPERMAN.jpeg" alt="Superman Costume">
-  <strong>Rent: ₹499 / Day</strong>
-  <a class="btn" href="https://wa.me/918555911782text=Hi%20I%20want%20to%20rent%20Superman%20Costume">Rent Now</a>
-</div>
-    
-<div class="card">
-    <img src="IMG_20260726_144556.jpg" alt="Bharatanatyam Costume">
-    <h2>🥻 Bharatanatyam Costume</h2>
-    <p><strong>Rent: ₹499 / Day</strong></p>
-    <a class="btn" href="https://wa.me/8555911782?text=Hi%20I%20want%20to%20rent%20the%20Bharatanatyam%20Costume">Rent Now</a>
-</div>
-
-<div class="card">
-    <img src="ChatGPT_Image_May_11_2026_08_09_58_PM.png" alt="Lord Krishna Costume">
-    <h2>🦚 Lord Krishna Costume</h2>
-    <p><strong>Rent: ₹499 / Day</strong></p>
-    <a class="btn" href="https://wa.me/8555911782?text=Hi%20I%20want%20to%20rent%20the%20Lord%20Krishna%20Costume">Rent Now</a>
-</div>
-
-<div class="card">
-    <img src="imc1120.jpg" alt="Santa Claus Costume">
-    <h2>🎅 Santa Claus Costume</h2>
-    <p><strong>Rent: ₹499 / Day</strong></p>
-    <a class="btn" href="https://wa.me/8555911782?text=Hi%20I%20want%20to%20rent%20the%20Santa%20Claus%20Costume">Rent Now</a>
-</div>
-
-<div class="card">
-    <img src="Gemini_Generated_Image_4bn6lx4bn6lx4bn6.png" alt="Dr. B. R. Ambedkar Costume">
-    <h2>🇮🇳 Dr. B. R. Ambedkar Costume</h2>
-    <p><strong>Rent: ₹499 / Day</strong></p>
-    <a class="btn" href="https://wa.me/8555911782?text=Hi%20I%20want%20to%20rent%20the%20Dr.%20B.%20R.%20Ambedkar%20Costume">Rent Now</a>
-</div>
-
-<div class="card">
-    <img src="Gemini_Generated_Image_4maxbc4maxbc4max.png" alt="Rani Rudrama Devi Costume">
-    <h2>👑 Rani Rudrama Devi Costume</h2>
-    <p><strong>Rent: ₹499 / Day</strong></p>
-    <a class="btn" href="https://wa.me/8555911782?text=Hi%20I%20want%20to%20rent%20the%20Rani%20Rudrama%20Devi%20Costume">Rent Now</a>
-</div>
-
-<div class="card">
-    <img src="Gemini_Generated_Image_70vwq870vwq870vw.png" alt="Jawaharlal Nehru Costume">
-    <h2>🇮🇳 Jawaharlal Nehru Costume</h2>
-    <p><strong>Rent: ₹499 / Day</strong></p>
-    <a class="btn" href="https://wa.me/8555911782?text=Hi%20I%20want%20to%20rent%20the%20Jawaharlal%20Nehru%20Costume">Rent Now</a>
-</div>
+    <div class="card">
+        <img
+            src="Kids Spider-man PS4 Advanced Suit Spiderman Children Cosplay Jumpsuit.jpeg"
+            alt="Spider-Man Costume"
+        >
+        <h2>🦸 Spider-Man Costume</h2>
+        <p><strong>Rent: ₹599 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20Spider-Man%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
 
     <div class="card">
-    <img src="Gemini_Generated_Image_xg1fo8xg1fo8xg1f.png" alt="Subhas Chandra Bose Costume">
-    <h2>🇮🇳 Subhas Chandra Bose Costume</h2>
-    <p><strong>Rent: ₹499 / Day</strong></p>
-    <a class="btn" href="https://wa.me/8555911782?text=Hi%20I%20want%20to%20rent%20the%20Subhas%20Chandra%20Bose%20Costume">Rent Now</a>
+        <img
+            src="Red-frock.jpg"
+            alt="Princess Costume"
+        >
+        <h2>👸 Princess Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20the%20Princess%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
+    <div class="card">
+        <img
+            src="Gemini_Generated_Image_h1dwynh1dwynh1dw (1).png"
+            alt="Police Costume"
+        >
+        <h2>👮 Police Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20Police%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
+    <div class="card">
+        <img
+            src="78-copy.jpg"
+            alt="Doctor Costume"
+        >
+        <h2>👨‍⚕️ Doctor Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20the%20Doctor%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
+    <div class="card">
+        <img
+            src="Gemini_Generated_Image_gt88tgt88tgt88tg.png"
+            alt="Queen Costume"
+        >
+        <h2>👑 Queen Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20the%20Queen%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
+    <div class="card">
+        <img
+            src="Gemini_Generated_Image_u15j7fu15j7fu15j.png"
+            alt="Batman Costume"
+        >
+        <h2>🦇 Batman Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20the%20Batman%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
+    <div class="card">
+        <img
+            src="SUPERMAN.jpeg"
+            alt="Superman Costume"
+        >
+        <h2>🦸 Superman Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20Superman%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
+    <div class="card">
+        <img
+            src="IMG_20260726_144556.jpg"
+            alt="Bharatanatyam Costume"
+        >
+        <h2>🥻 Bharatanatyam Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20the%20Bharatanatyam%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
+    <div class="card">
+        <img
+            src="ChatGPT_Image_May_11_2026_08_09_58_PM.png"
+            alt="Lord Krishna Costume"
+        >
+        <h2>🦚 Lord Krishna Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20the%20Lord%20Krishna%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
+    <div class="card">
+        <img
+            src="imc1120.jpg"
+            alt="Santa Claus Costume"
+        >
+        <h2>🎅 Santa Claus Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20the%20Santa%20Claus%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
+    <div class="card">
+        <img
+            src="Gemini_Generated_Image_4bn6lx4bn6lx4bn6.png"
+            alt="Dr. B. R. Ambedkar Costume"
+        >
+        <h2>🇮🇳 Dr. B. R. Ambedkar Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20the%20Dr.%20B.%20R.%20Ambedkar%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
+    <div class="card">
+        <img
+            src="Gemini_Generated_Image_4maxbc4maxbc4max.png"
+            alt="Rani Rudrama Devi Costume"
+        >
+        <h2>👑 Rani Rudrama Devi Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20the%20Rani%20Rudrama%20Devi%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
+    <div class="card">
+        <img
+            src="Gemini_Generated_Image_70vwq870vwq870vw.png"
+            alt="Jawaharlal Nehru Costume"
+        >
+        <h2>🇮🇳 Jawaharlal Nehru Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20the%20Jawaharlal%20Nehru%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
+    <div class="card">
+        <img
+            src="Gemini_Generated_Image_xg1fo8xg1fo8xg1f.png"
+            alt="Subhas Chandra Bose Costume"
+        >
+        <h2>🇮🇳 Subhas Chandra Bose Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20the%20Subhas%20Chandra%20Bose%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
+    <div class="card">
+        <img
+            src="Gemini_Generated_Image_lmqsw6lmqsw6lmqs.png"
+            alt="Chhatrapati Shivaji Maharaj Costume"
+        >
+        <h2>👑 Chhatrapati Shivaji Maharaj Costume</h2>
+        <p><strong>Rent: ₹499 / Day</strong></p>
+        <a
+            class="btn"
+            href="https://wa.me/918555911782?text=Hi%20I%20want%20to%20rent%20the%20Chhatrapati%20Shivaji%20Maharaj%20Costume"
+        >
+            Rent Now
+        </a>
+    </div>
+
 </div>
 
-<div class="card">
-    <img src="Gemini_Generated_Image_lmqsw6lmqsw6lmqs.png" alt="Chhatrapati Shivaji Maharaj Costume">
-    <h2>👑 Chhatrapati Shivaji Maharaj Costume</h2>
-    <p><strong>Rent: ₹499 / Day</strong></p>
-    <a class="btn" href="https://wa.me/8555911782?text=Hi%20I%20want%20to%20rent%20the%20Chhatrapati%20Shivaji%20Maharaj%20Costume">Rent Now</a>
-</div>
-    <script>
-const search = document.querySelector(".search");
+<script>
+    const search = document.querySelector(".search");
 
-if (search) {
-  search.addEventListener("keyup", function () {
-    const value = search.value.toLowerCase();
-    const cards = document.querySelectorAll(".card");
+    if (search) {
+        search.addEventListener("input", function () {
+            const value = this.value.toLowerCase().trim();
+            const cards = document.querySelectorAll(".card");
 
-    cards.forEach(function(card) {
-      const text = card.innerText.toLowerCase();
+            cards.forEach(function (card) {
+                const text = card.innerText.toLowerCase();
 
-      if (text.includes(value)) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
-    });
-  });
-}
+                card.style.display = text.includes(value) ? "" : "none";
+            });
+        });
+    }
 </script>
+
+</body>
 </html>
