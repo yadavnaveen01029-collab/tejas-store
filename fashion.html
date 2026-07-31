@@ -24,10 +24,9 @@
             overflow-x: hidden;
         }
 
-        /* Header */
+        /* HEADER */
         header {
             background: #000;
-            color: #fff;
             text-align: center;
             padding: 18px 12px;
             border-bottom: 2px solid #00c853;
@@ -45,19 +44,19 @@
             font-size: 15px;
         }
 
-        /* Top banner */
+        /* MAIN BANNER */
         .banner {
             width: 100%;
             overflow: hidden;
         }
 
         .banner img {
+            display: block;
             width: 100%;
             height: auto;
-            display: block;
         }
 
-        /* Hero */
+        /* HERO */
         .hero {
             text-align: center;
             padding: 35px 15px;
@@ -81,13 +80,11 @@
             display: inline-block;
             background: #00c853;
             color: #fff;
-            border: none;
             padding: 12px 22px;
             border-radius: 10px;
+            text-decoration: none;
             font-size: 16px;
             font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
             transition: 0.25s ease;
         }
 
@@ -96,7 +93,7 @@
             color: #000;
         }
 
-        /* Fashion category grid */
+        /* COLLECTION GRID */
         .fashion {
             width: 100%;
             max-width: 1400px;
@@ -111,36 +108,42 @@
         .category-card {
             display: block;
             background: #1d1d1d;
-            border: 1px solid #2e2e2e;
+            border: 1px solid #2f2f2f;
             border-radius: 18px;
             overflow: hidden;
             text-decoration: none;
             color: #fff;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-            transition: 0.25s ease;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
         }
 
         .category-card:hover {
             transform: translateY(-5px);
             border-color: #00c853;
-            box-shadow: 0 0 22px rgba(0,200,83,0.25);
+            box-shadow: 0 0 22px rgba(0, 200, 83, 0.25);
         }
 
         .category-image {
+            display: block;
             width: 100%;
             height: auto;
-            display: block;
             background: #222;
         }
 
         .category-content {
-            padding: 16px;
             text-align: center;
+            padding: 16px;
         }
 
         .category-content h2 {
             margin: 0 0 8px;
             font-size: 22px;
+            line-height: 1.2;
         }
 
         .category-content p {
@@ -160,7 +163,33 @@
             font-weight: bold;
         }
 
-        /* Mobile */
+        /* TABLET */
+        @media (max-width: 900px) {
+
+            .fashion {
+                gap: 14px;
+                padding: 20px 12px 30px;
+            }
+
+            .category-content {
+                padding: 12px;
+            }
+
+            .category-content h2 {
+                font-size: 18px;
+            }
+
+            .category-content p {
+                font-size: 12px;
+            }
+
+            .category-btn {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+        }
+
+        /* MOBILE */
         @media (max-width: 700px) {
 
             header {
@@ -181,10 +210,12 @@
 
             .hero h1 {
                 font-size: 25px;
+                line-height: 1.2;
             }
 
             .hero p {
                 font-size: 13px;
+                line-height: 1.5;
             }
 
             .shop-btn {
@@ -192,9 +223,14 @@
                 font-size: 13px;
             }
 
+            /*
+               MOBILE LAYOUT:
+               Men's + Women's = side by side
+               Kids = next row, full width
+            */
             .fashion {
-                grid-template-columns: 1fr;
-                gap: 16px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
                 padding: 18px 10px 30px;
             }
 
@@ -202,29 +238,41 @@
                 border-radius: 14px;
             }
 
+            .category-card.kids-card {
+                grid-column: 1 / -1;
+            }
+
             .category-content {
-                padding: 12px;
+                padding: 11px;
             }
 
             .category-content h2 {
-                font-size: 19px;
+                font-size: 16px;
+                line-height: 1.2;
             }
 
             .category-content p {
-                font-size: 12px;
+                font-size: 11px;
+                line-height: 1.4;
+                margin-bottom: 10px;
             }
 
             .category-btn {
-                font-size: 12px;
-                padding: 8px 13px;
+                font-size: 11px;
+                padding: 7px 10px;
+                border-radius: 7px;
             }
         }
 
-        /* Very small phones */
+        /* VERY SMALL MOBILE */
         @media (max-width: 380px) {
 
             header h1 {
                 font-size: 21px;
+            }
+
+            header p {
+                font-size: 11px;
             }
 
             .hero h1 {
@@ -235,8 +283,27 @@
                 font-size: 12px;
             }
 
+            .fashion {
+                gap: 9px;
+                padding-left: 7px;
+                padding-right: 7px;
+            }
+
+            .category-content {
+                padding: 9px;
+            }
+
             .category-content h2 {
-                font-size: 18px;
+                font-size: 14px;
+            }
+
+            .category-content p {
+                font-size: 10px;
+            }
+
+            .category-btn {
+                font-size: 10px;
+                padding: 6px 8px;
             }
         }
     </style>
@@ -244,13 +311,13 @@
 
 <body>
 
-    <!-- Page Header -->
+    <!-- HEADER -->
     <header>
         <h1>👕 Teja's Store Fashion</h1>
         <p>Premium Styles for Men • Women • Kids</p>
     </header>
 
-    <!-- Main Fashion Banner -->
+    <!-- MAIN FASHION BANNER -->
     <section class="banner">
         <img
             src="file_0000000089e481fbaab95b9a8dfa66d5.png"
@@ -258,7 +325,7 @@
         >
     </section>
 
-    <!-- Hero -->
+    <!-- HERO -->
     <section class="hero">
         <h1>✨ New Fashion Collection 2026</h1>
 
@@ -272,10 +339,10 @@
         </a>
     </section>
 
-    <!-- Fashion Categories -->
+    <!-- COLLECTIONS -->
     <section class="fashion" id="collections">
 
-        <!-- Men's -->
+        <!-- MEN'S -->
         <a class="category-card" href="mens.html">
 
             <img
@@ -298,7 +365,7 @@
 
         </a>
 
-        <!-- Women's -->
+        <!-- WOMEN'S -->
         <a class="category-card" href="womens.html">
 
             <img
@@ -321,8 +388,8 @@
 
         </a>
 
-        <!-- Kids -->
-        <a class="category-card" href="kids.html">
+        <!-- KIDS -->
+        <a class="category-card kids-card" href="kids.html">
 
             <img
                 class="category-image"
